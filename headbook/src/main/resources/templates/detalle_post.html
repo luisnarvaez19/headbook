@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{|/css/bootstrap.min.css|}" rel='stylesheet' type='text/css' />
+<link th:href="@{|/css/style.css|}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" th:href="@{|/fonts/font-awesome-4.5.0/css/font-awesome.css|}">
+<link rel="stylesheet" th:href="@{|/css/icon-font.min.css|}" type='text/css' />
+<script th:src="@{|/js/Chart.js|}"></script>
+<script th:src="@{|/js/classie.js|}"></script>
+<script th:src="@{|/js/modalEffects.js|}"></script>
+
+<link rel="shortcut icon" th:href="@{|/img/favicon.ico|}">
+
+<link th:href="@{|/css/animate.css|}" rel="stylesheet" type="text/css" media="all">
+<script th:src="@{|/js/wow.min.js|}"></script>
+<script th:src="@{|/js/jquery-1.10.2.min.js|}"></script>
+<link rel="stylesheet" th:href="@{|/css/jquery-ui.css|}" type='text/css' />
+<script th:src="@{|/js/jquery-ui.js|}"></script>
+<!-- Placed js at the end of the document so the pages load faster -->
+<link rel="stylesheet" type="text/css" th:href="@{|/css/jquery.dataTables.css|}"/>
+<script type="text/javascript" th:src="@{|/js/jquery.dataTables.js|}"></script>
+<link th:href="@{|/css/fonts-fspro.css|}" rel="stylesheet" type="text/css" media="all">
+
+
+<title>Post completo</title>
+<style>
+   table {border-collapse:collapse; table-layout:fixed; }
+   table td {border:solid 1px #fab; word-wrap:break-word;}
+   </style>
+</head>
+<body  class="sticky-header left-side-collapsed" >
+	<section>
+					<div class="left-side sticky-left-side">
+						<!--logo and iconic logo start-->
+						<div class="logo">
+							<h1>Head<span>Book</span></h1>
+						</div>
+						<div class="logo-icon text-center"></div>
+						<div class="left-side-inner">
+								<ul class="nav nav-pills nav-stacked custom-nav"></ul>
+						</div>
+					</div>
+		<div class="main-content main-content2">
+			<div class="header-section">
+			 
+				<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+
+			<div class="menu-right">
+				<div class="user-panel-top">  	
+					<div class="profile_details_left">
+							<h3>HeadBook&nbsp;&nbsp;</h3>	   							   		
+							<div class="clearfix"></div>	
+					</div>
+					<div class="profile_details">		
+						<ul>
+							<li class="dropdown profile_details_drop">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<div class="profile_img">
+										 <div class="user-name">
+											<p>Usuario<span><br>cargo</span></p>
+										 </div>
+										 <i class="lnr lnr-chevron-down"></i>
+										 <i class="lnr lnr-chevron-up"></i>
+										<div class="clearfix"></div>	
+									</div>	
+								</a>
+								<ul class="dropdown-menu drp-mnu">
+                                	<li> <a href="contact.html"><i class="fa fa-envelope"></i>Soporte</a> </li>
+                                    <li> <a href="social.html"><i class="fa fa-hashtag"></i>Redes Sociales</a> </li>
+                                	<li> <a href="faq.html"><i class="fa fa-question"></i> Dudas/Preguntas</a> </li>
+									<li> <a href="Logout"><i class="fa fa-sign-out"></i> Salir</a> </li>
+								</ul>
+							</li>
+						</ul>
+					</div>			             	
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			</div>
+         </div>   
+<div id="page-wrapper">
+		<div class="graphs">
+              	<div class="float-right">
+                  	<div class="btn-group">
+                      	<a class="btn btn-default" th:href="@{/}"><i class="fa fa-arrow-left fa-2x"></i><br>Regresar</a>
+                      </div>
+				</div>
+		<h3 class="blank1">Post completo</h3> 
+	<div th:switch="${post}">
+    <h2 th:case="null">Error en la aplicacion!</h2>
+        <div th:case="*">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Post</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr >
+                    <td th:text="${post.content}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>      
+    
+</div>
+</div>
+</div>
+</section>
+			<footer>
+            	<div class="col-md-4">
+				   	<div class="profile_details_left">
+						<div class="nofitications-dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-twitter fa-1x"></i></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-facebook fa-1x"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-instagram fa-1x"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope fa-1x"></i></a>
+							
+                           </div>
+                          </div>
+                          </div>  
+                <div class="col-md-8">
+                	<p>&copy HeadBook. All Rights Reserved | Develop by <a href="https://www.linkedin.com/in/luis-narvaez-31886242" target="_blank">Luis Narvaez</a></p>
+                </div>   
+			</footer>
+        <!--footer section end-->
+        <script th:src="@{|/js/jquery.nicescroll.js|}"></script>
+<script th:src="@{|/js/scripts.js|}"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script th:src="@{|/js/dataTables.bootstrap.min.js|}"></script>
+   <script th:src="@{|/js/bootstrap.min.js|}"></script>
+</body>
+</html>

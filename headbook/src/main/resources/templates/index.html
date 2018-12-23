@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Bootstrap Core CSS -->
+<link th:href="@{|/css/bootstrap.min.css|}" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link th:href="@{|/css/style.css|}" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link rel="stylesheet" th:href="@{|/fonts/font-awesome-4.5.0/css/font-awesome.css|}">
+<!-- jQuery -->
+<!-- lined-icons Tiene los icons de home y de power -->
+<link rel="stylesheet" th:href="@{|/css/icon-font.min.css|}" type='text/css' />
+<!-- //lined-icons -->
+<!-- chart -->
+<script th:src="@{|/js/Chart.js|}"></script>
+<script th:src="@{|/js/classie.js|}"></script>
+<script th:src="@{|/js/modalEffects.js|}"></script>
+<!-- //chart -->
+<!--animate-->
+
+<link rel="shortcut icon" th:href="@{|/img/favicon.ico|}">
+
+<link th:href="@{|/css/animate.css|}" rel="stylesheet" type="text/css" media="all">
+<script th:src="@{|/js/wow.min.js|}"></script>
+<script th:src="@{|/js/jquery-1.10.2.min.js|}"></script>
+<link rel="stylesheet" th:href="@{|/css/jquery-ui.css|}" type='text/css' />
+<script th:src="@{|/js/jquery-ui.js|}"></script>
+<!-- Placed js at the end of the document so the pages load faster -->
+<link rel="stylesheet" type="text/css" th:href="@{|/css/jquery.dataTables.css|}"/>
+<script type="text/javascript" th:src="@{|/js/jquery.dataTables.js|}"></script>
+<link th:href="@{|/css/fonts-fspro.css|}" rel="stylesheet" type="text/css" media="all">
+<script>
+$(document).ready(function() {
+	
+    var oTable = $("#listadoPosts").dataTable( {
+    	"sDom": 'T<"clear">lfrtip',
+        "oTableTools": {
+            "sSwfPath": "./js/lib/copy_csv_xls_pdf.swf",
+            "aButtons": [
+                {
+                    "sExtends": "xls",
+                    "sTitle": "Reporte Flota",
+                    "mColumns": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                },
+                {
+                    "sExtends": "pdf",
+                    "sTitle": "Reporte Flota",
+                    "mColumns": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                }
+            ]
+        },
+        "aaSorting": [],
+        "bProcessing": true,
+        "bPaginate": true,
+        "sPaginationType": "full_numbers",
+        "bFilter": true,
+        "iDisplayLength": 12,
+        "bSort": true,
+        "oLanguage": {"sProcessing":     "Procesando...",
+     		"sLengthMenu":     "Mostrar _MENU_ registros",
+     		"sZeroRecords":    "No se encontraron resultados", 
+    		 "sEmptyTable":     "Ning\u00FAn dato disponible en esta tabla", 
+     		"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros", 
+     		"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros", 
+    		"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)", 
+    		"sInfoPostFix":    "", 
+     		"sSearch":         "Buscar:", 
+    		"sUrl":            "", 
+    		"sInfoThousands":  ",", 
+     		"sLoadingRecords": "Cargando...", 
+    		 	"oPaginate": { 
+         		"sFirst":    "Primero", 
+        		"sLast":     "Último", 
+         		"sNext":     "Siguiente", 
+         		"sPrevious": "Anterior" 
+     			}, 
+     		"fnInfoCallback": null, 
+    		 "oAria": { 
+         	 "sSortAscending":  ": Activar para ordenar la columna de manera ascendente", 
+        	 "sSortDescending": ": Activar para ordenar la columna de manera descendente" 
+     		}
+         }
+    });
+     
+    $("tfoot input").keyup( function () {
+        /* Filter on the column (the index) of this element */
+        oTable.fnFilter( this.value, $("tfoot input").index(this) );
+   	});
+
+
+
+    /*
+     * Support functions to provide a little bit of 'user friendlyness' to the textboxes in
+     * the footer
+     */
+    $("tfoot input").each( function (i) {
+        asInitVals[i] = this.value;
+    });
+     
+    $("tfoot input").focus( function () {
+        if ( this.className == "search_init" )
+        {
+            this.className = "";
+            this.value = "";
+        }
+    });
+     
+    $("tfoot input").blur( function (i) {
+        if ( this.value == "" )
+        {
+            this.className = "search_init";
+            this.value = asInitVals[$("tfoot input").index(this)];
+        }
+    });
+   
+    var table = $('#listadoPosts').DataTable();
+
+});
+</script>
+<title>Listado de Posts</title>
+ <style>
+   table td {border:solid 1px #fab; word-wrap:break-word;}
+   </style>
+</head>
+<body  class="sticky-header left-side-collapsed" >
+	<section>
+		 <!-- left side start-->
+					<div class="left-side sticky-left-side">
+						<!--logo and iconic logo start-->
+						<div class="logo">
+							<h1>Head<span>Book</span></h1>
+						</div>
+						<div class="logo-icon text-center"></div>
+						<!--logo and iconic logo end-->
+						<div class="left-side-inner">
+			           	  <!--sidebar nav start-->
+								<ul class="nav nav-pills nav-stacked custom-nav"></ul>
+							<!--sidebar nav end-->
+						</div>
+					</div>
+			    <!-- left side end-->
+		!-- main content start-->
+		<div class="main-content main-content2">
+			<!-- header-starts -->
+			<div class="header-section">
+			 
+			<!--toggle button start-->
+				<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+			<!--toggle button end-->
+
+			<!--notification menu start -->
+			<div class="menu-right">
+				<div class="user-panel-top">  	
+					<div class="profile_details_left">
+							<h3>HeadBook&nbsp;&nbsp;</h3>	   							   		
+							<div class="clearfix"></div>	
+					</div>
+					<div class="profile_details">		
+						<ul>
+							<li class="dropdown profile_details_drop">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<div class="profile_img">
+										 <div class="user-name">
+											<p>Usuario<span><br>cargo</span></p>
+										 </div>
+										 <i class="lnr lnr-chevron-down"></i>
+										 <i class="lnr lnr-chevron-up"></i>
+										<div class="clearfix"></div>	
+									</div>	
+								</a>
+								<ul class="dropdown-menu drp-mnu">
+                                	<li> <a href="contact.html"><i class="fa fa-envelope"></i>Soporte</a> </li>
+                                    <li> <a href="social.html"><i class="fa fa-hashtag"></i>Redes Sociales</a> </li>
+                                	<li> <a href="faq.html"><i class="fa fa-question"></i> Dudas/Preguntas</a> </li>
+									<li> <a href="Logout"><i class="fa fa-sign-out"></i> Salir</a> </li>
+								</ul>
+							</li>
+						</ul>
+					</div>			             	
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!--notification menu end -->
+			</div>
+         </div>   
+	<!-- //header-ends -->
+			<!---Content-->	
+		<div id="page-wrapper">
+		<div class="graphs" th:switch="${posts}">
+	    <h2 th:case="null">No hay posts todavia!</h2>
+	        <div th:case="*">
+	            <h3 class="blank1">Listado de Posts</h3> 
+	            <table class="table table-striped" id="listadoPosts">
+	                <thead>
+	                    <tr class="warning">
+	                        <th>Usuario</th>
+	                        <th>Titulo</th>
+	                        <th>Contenido</th>
+	                        <th>Likes</th>
+	                        <th></th>
+	                        <th></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                <tr th:each="post : ${posts}">
+	                    <td style="width: 15%" th:text="${post.usuario.nombreCompleto}"></td>
+	                    <td style="width: 15%" th:text="${post.title}"></td>
+	                    <td style="width: 57%"  th:text="${post.mostrarPost}" ></td>
+	                    <td style="width: 3%; text-align: center;" th:text="${post.countLikes}"></td>
+	                    <td style="width: 5%; text-align: center;" ><a th:href="@{/likes/{id}(id=${post.id})}"><img id="image-1" alt="like" title="likes"  th:src="@{|/img/like.jpg|}" width="21" height="21" /></a></td>
+	                    <td style="width: 5%" ><a th:href="@{/detalle/{id}(id=${post.id})}"><i class="fa fa-file" title="Ver mas" style="text-align: center;display: block;"></i></a></td>
+	                    
+	                </tr>
+		            </tbody>
+		        </table>
+	    	</div>
+	    </div>      
+	    <p style="margin-top: 20px;"><a href="/agregar">Agrega un nuevo post</a></p>
+	    </div>
+	    <!--End Content--->
+	</section>
+	 <!--footer section start-->
+			<footer>
+            	<div class="col-md-4">
+				   	<div class="profile_details_left">
+						<div class="nofitications-dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-twitter fa-1x"></i></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-facebook fa-1x"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-instagram fa-1x"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope fa-1x"></i></a>
+							
+                           </div>
+                          </div>
+                          </div>  
+                <div class="col-md-8">
+                	<p>&copy HeadBook. All Rights Reserved | Develop by <a href="https://www.linkedin.com/in/luis-narvaez-31886242" target="_blank">Luis Narvaez</a></p>
+                </div>   
+			</footer>
+        <!--footer section end-->
+        <script th:src="@{|/js/jquery.nicescroll.js|}"></script>
+<script th:src="@{|/js/scripts.js|}"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script th:src="@{|/js/dataTables.bootstrap.min.js|}"></script>
+   <script th:src="@{|/js/bootstrap.min.js|}"></script>
+</body>
+</html>
