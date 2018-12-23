@@ -1,6 +1,6 @@
 ** Aplicación de red social HeadBook**
 
-La aplicación fue desarollada con Eclipse 2018-2019 y con la base de datos PostgreSQL versión 10.
+La aplicación fue desarollada con Eclipse 2018-2019, Spring Boot, Hibernate, Thymeleaf y con la base de datos PostgreSQL versión 10.
 
 ---
 
