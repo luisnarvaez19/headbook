@@ -23,3 +23,12 @@ Los usuarios para la creación de posts son los de UUID:
 2. 881e14d2-064a-11e9-9be4-13628b2452a5.
 3. Sino se usan estos usuarios para la creación de posts, la aplicación dará error.
 
+---
+
+## Otros
+
+Comentarios varios acerca de la aplicación
+
+1. El enlace de agregar post está bajo el listado inicial de post, si la pantalla no se abre completa a lo mejor quede oculto.
+2. La aplicación fue probada en Google Chrome y en Mozilla Firefox
+3. Cualquier problema con la aplicación, favor escribir al email luisnarvaez@gmail.com
