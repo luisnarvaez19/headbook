@@ -1,16 +1,14 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+** Aplicación de red social HeadBook**
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
-
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+La aplicación fue desarollada con Eclipse 2018-2019 y con la base de datos PostgreSQL versión 10.
 
 ---
 
-## Edit a file
+## Crear la Base de Datos
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+Para crear la base de datos se deben usar los archivos en el directorio resources/static/bd en el proyecto.
 
-1. Click **Source** on the left side.
+1. Se debe crear un role headbook con password 12345
 2. Click the README.md link from the list of files.
 3. Click the **Edit** button.
 4. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
