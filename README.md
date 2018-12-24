@@ -17,11 +17,13 @@ Para crear la base de datos se deben usar los archivos en el directorio resource
 
 ## Usuarios
 
-Los usuarios para la creación de posts son los de UUID:
+Los usuarios para trabajar con la aplicación son:
 
-1. 3bffb3b6-053d-11e9-a890-2f7374de4daa.
-2. 881e14d2-064a-11e9-9be4-13628b2452a5.
-3. Sino se usan estos usuarios para la creación de posts, la aplicación dará error.
+1. usuario: user1  contraseña: password.
+2. usuario: user1  contraseña: password.
+3. No fue un requerimiento de la prueba, pero se creo el login para los usuarios.
+4. Se creo el login, para que las funcionalidades de hacer like y crear post trabajaran con dicho usuario.
+5. Se agregaron los campos username y password en la tabla usuario
 
 ---
 
