@@ -34,3 +34,4 @@ Comentarios varios acerca de la aplicación
 1. El enlace de agregar post está bajo el listado inicial de post, si la pantalla no se abre completa a lo mejor quede oculto.
 2. La aplicación fue probada en Google Chrome y en Mozilla Firefox
 3. Cualquier problema con la aplicación, favor escribir al email luisnarvaez@gmail.com
+4. Por cuestiones de estética se mostraron 75 caracteres del contenido en vez de 50.
