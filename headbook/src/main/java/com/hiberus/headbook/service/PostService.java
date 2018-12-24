@@ -23,9 +23,9 @@ public class PostService implements IPostService {
 	@Autowired
 	private PostRepository postRepository;
 	@Autowired
-    private LikesService likesService;
+    private ILikesService likesService;
 	@Autowired
-    private UsuarioService usuarioService;
+    private IUsuarioService usuarioService;
 	
 	@Override
 	public Post getPostById(UUID id) {
@@ -36,17 +36,16 @@ public class PostService implements IPostService {
 
 	@Override
 	@Transactional
-	public String addPost(PostDTO postDTO) {
+	public String addPost(PostDTO postDTO,String user) {
 		// TODO Auto-generated method stub
 		try {
-			UUID uid = UUID.fromString(postDTO.getUsuario());
-			Usuario usuario=usuarioService.getUsuario(uid);
+			Usuario usuario=usuarioService.getUsuarioByUsername(user);
 			Date date=null;
 			
-				if (usuario==null) return "El usuario no existe" ;
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-				String dateInString = postDTO.getFecha();
-				date = formatter.parse(dateInString);
+			if (usuario==null) return "El usuario no existe" ;
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+			String dateInString = postDTO.getFecha();
+			date = formatter.parse(dateInString);
 			
 			Post post=new Post();
 			post.setUsuario(usuario);
@@ -75,11 +74,12 @@ public class PostService implements IPostService {
 	
 	@Override
 	@Transactional
-	public Post setLikesPost(UUID id) {
+	public Post setLikesPost(UUID id,String user) {
 		// TODO Auto-generated method stub
+		Usuario usuario = usuarioService.getUsuarioByUsername(user);
 		Post post = postRepository.findById(id).get();
-		if (!(likesService.existsLikes(post, post.getUsuario()))) {
-			Likes likes=likesService.addLikes(post, post.getUsuario());
+		if (!(likesService.existsLikes(post, usuario ))) {
+			Likes likes=likesService.addLikes(post,usuario);
 			Set<Likes> likesSet=post.getLikes();
 			likesSet.add(likes);
 			post.setLikes(likesSet);

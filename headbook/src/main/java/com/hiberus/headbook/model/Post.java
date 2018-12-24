@@ -96,8 +96,8 @@ public class Post implements java.io.Serializable {
 
 	@Transient
 	public String getMostrarPost() {
-		if (content.length()>=50)
-			mostrarPost=content.substring(0, 50);
+		if (content.length()>=75)
+			mostrarPost=content.substring(0, 75);
 		else mostrarPost=content;
 		return mostrarPost;
 	}

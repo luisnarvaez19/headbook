@@ -9,6 +9,6 @@ import com.hiberus.headbook.model.Post;
 public interface IPostService {
 	public List<Post> findAllByOrderByDateDesc();
 	Post getPostById(UUID id);
-	Post setLikesPost(UUID id);
-	String addPost(PostDTO postDTO);
+	String addPost(PostDTO postDTO, String user);
+	Post setLikesPost(UUID id, String user);
 }

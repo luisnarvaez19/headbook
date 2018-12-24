@@ -13,7 +13,7 @@
 <script th:src="@{|/js/classie.js|}"></script>
 <script th:src="@{|/js/modalEffects.js|}"></script>
 
-<link rel="shortcut icon" th:href="@{|/img/favicon.ico|}">
+<!-- <link rel="shortcut icon" th:href="@{|/img/favicon.ico|}"> -->
 
 <link th:href="@{|/css/animate.css|}" rel="stylesheet" type="text/css" media="all">
 <script th:src="@{|/js/wow.min.js|}"></script>
@@ -82,7 +82,7 @@ $(function () {
                                 	<li> <a href="contact.html"><i class="fa fa-envelope"></i>Soporte</a> </li>
                                     <li> <a href="social.html"><i class="fa fa-hashtag"></i>Redes Sociales</a> </li>
                                 	<li> <a href="faq.html"><i class="fa fa-question"></i> Dudas/Preguntas</a> </li>
-									<li> <a href="Logout"><i class="fa fa-sign-out"></i> Salir</a> </li>
+									<li> <a th:href="@{/logout}"><i class="fa fa-sign-out"></i> Salir</a> </li>
 								</ul>
 							</li>
 						</ul>
@@ -96,10 +96,12 @@ $(function () {
 		<div class="graphs">
               	<div class="float-right">
                   	<div class="btn-group">
-                      	<a class="btn btn-default" th:href="@{/}"><i class="fa fa-arrow-left fa-2x"></i><br>Regresar</a>
+                      	<a class="btn btn-default" th:href="@{/home}"><i class="fa fa-arrow-left fa-2x"></i><br>Regresar</a>
                       </div>
 				</div>
 		<h3 class="blank1">Agrega Post</h3> 
+		<h2 th:if="${#httpServletRequest.remoteUser == null}">Debe hacer login en la aplicación: localhost:8080/login</h2>
+		<div th:if="${#httpServletRequest.remoteUser != null}">
 		<span th:if="${mensaje != null}" th:text="${mensaje}">Mensaje de error</span>
 		<div th:if="${mensaje == null}" class="xs">
 			<div class="col-md-12 inbox_right">
@@ -109,13 +111,7 @@ $(function () {
 
 							<form role="form" action="#" th:action="@{/agregapost}" th:object="${postDTO}"	method="post" class="form-horizontal">
 											
-								<div class="form-group">
-									<label class="col-md-2 control-label" for="usuario">Usuario:</label>
-									<div class="col-md-4">
-										<input type="text" th:field="*{usuario}" class="form-control"	id="name" placeholder="El usuario es un UUID" required="required" oninvalid="this.setCustomValidity('El usuario no puede ser dejado en blanco')" oninput="setCustomValidity('')" />
-									</div>
-								</div>
-								<div class="clearfix"> </div>
+								
 								<div class="form-group">
 									<label	class="col-md-2 control-label"  for="fecha">Fecha:</label>
 									<div class="col-md-4">
@@ -139,7 +135,7 @@ $(function () {
 								 <div class="clearfix"> </div>
 								<div class="float-right-btn" style="margin-left: 20px;">
 									<button class="btn-success btn"	type="submit" value="Agrega Post">Agrega Post</button>
-									<button class="btn-success btn" type="button" onclick="location.href='/'">Cancelar</button>
+									<button class="btn-success btn" type="button" onclick="location.href='/home'">Cancelar</button>
 								</div>
 								 <div class="clearfix"> </div>
 								</div>
@@ -149,6 +145,7 @@ $(function () {
 											 
 							</form>
 		
+		</div>
 		</div>
 		</div>
 		</div>

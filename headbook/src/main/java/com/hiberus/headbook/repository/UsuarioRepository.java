@@ -9,5 +9,5 @@ import com.hiberus.headbook.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, UUID>{
-
+	public Usuario findUsuarioByUsername(String username);
 }

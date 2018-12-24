@@ -3,6 +3,7 @@ package com.hiberus.headbook.controller;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,17 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hiberus.headbook.dto.PostDTO;
 import com.hiberus.headbook.model.Post;
-import com.hiberus.headbook.service.PostService;
+import com.hiberus.headbook.service.IPostService;
 
 @Controller
 public class PostController {
 	
 	@Autowired
-    private PostService postService;
+    private IPostService postService;
 	
-    
-    @RequestMapping("/")
-    public String listaPosts(Model model) {
+	
+	
+    @RequestMapping("/home")
+    public String listaPosts(Model model, HttpServletRequest request) {
+    	
     	List<Post> listaPost=postService.findAllByOrderByDateDesc();
         model.addAttribute("posts", listaPost);
         return "index";
@@ -45,18 +48,20 @@ public class PostController {
     }
     
     @GetMapping("/likes/{id}")
-    public String setLikesPost(@PathVariable("id") UUID id, Model model) {
+    public String setLikesPost(@PathVariable("id") UUID id, Model model,HttpServletRequest request) {
         Post post = postService.getPostById(id);
-        postService.setLikesPost(id);
+        String user = request.getRemoteUser();
+        postService.setLikesPost(id,user);
         model.addAttribute("post", post);
-        return "redirect:/";
+        return "redirect:/home";
     }
     
     @PostMapping("/agregapost")
-    public String agregaPost(PostDTO postDTO,  Model model) {
-        String mensaje=postService.addPost(postDTO);
+    public String agregaPost(PostDTO postDTO,  Model model,HttpServletRequest request) {
+    	String user = request.getRemoteUser();
+        String mensaje=postService.addPost(postDTO,user);
     	if (mensaje==null)
-        	return "redirect:/";
+        	return "redirect:/home";
         else {
         	if (mensaje.equals("No value present"))
         		model.addAttribute("mensaje","El usuario no existe");
@@ -66,4 +71,8 @@ public class PostController {
         }
         	
     }
+    
+   
+    
+    
 }

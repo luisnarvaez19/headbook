@@ -21,7 +21,7 @@
 <!-- //chart -->
 <!--animate-->
 
-<link rel="shortcut icon" th:href="@{|/img/favicon.ico|}">
+<!-- <link rel="shortcut icon" th:href="@{|/img/favicon.ico|}"> -->
 
 <link th:href="@{|/css/animate.css|}" rel="stylesheet" type="text/css" media="all">
 <script th:src="@{|/js/wow.min.js|}"></script>
@@ -175,7 +175,7 @@ $(document).ready(function() {
                                 	<li> <a href="contact.html"><i class="fa fa-envelope"></i>Soporte</a> </li>
                                     <li> <a href="social.html"><i class="fa fa-hashtag"></i>Redes Sociales</a> </li>
                                 	<li> <a href="faq.html"><i class="fa fa-question"></i> Dudas/Preguntas</a> </li>
-									<li> <a href="Logout"><i class="fa fa-sign-out"></i> Salir</a> </li>
+									<li> <a th:href="@{/logout}"><i class="fa fa-sign-out"></i> Salir</a> </li>
 								</ul>
 							</li>
 						</ul>
@@ -189,8 +189,10 @@ $(document).ready(function() {
 	<!-- //header-ends -->
 			<!---Content-->	
 		<div id="page-wrapper">
+		<h2 th:if="${#httpServletRequest.remoteUser == null}">Debe hacer login en la aplicación: localhost:8080/login</h2>
+		<div th:if="${#httpServletRequest.remoteUser != null}">
 		<div class="graphs" th:switch="${posts}">
-	    <h2 th:case="null">No hay posts todavia!</h2>
+	    <h2 th:case="null">No hay posts todavia</h2>
 	        <div th:case="*">
 	            <h3 class="blank1">Listado de Posts</h3> 
 	            <table class="table table-striped" id="listadoPosts">
@@ -216,9 +218,10 @@ $(document).ready(function() {
 	                </tr>
 		            </tbody>
 		        </table>
+		        <p style="margin-top: 20px;"><a href="/agregar">Agrega un nuevo post</a></p>
 	    	</div>
 	    </div>      
-	    <p style="margin-top: 20px;"><a href="/agregar">Agrega un nuevo post</a></p>
+	    </div>
 	    </div>
 	    <!--End Content--->
 	</section>

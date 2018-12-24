@@ -12,7 +12,7 @@
 <script th:src="@{|/js/classie.js|}"></script>
 <script th:src="@{|/js/modalEffects.js|}"></script>
 
-<link rel="shortcut icon" th:href="@{|/img/favicon.ico|}">
+<!-- <link rel="shortcut icon" th:href="@{|/img/favicon.ico|}"> -->
 
 <link th:href="@{|/css/animate.css|}" rel="stylesheet" type="text/css" media="all">
 <script th:src="@{|/js/wow.min.js|}"></script>
@@ -71,7 +71,7 @@
                                 	<li> <a href="contact.html"><i class="fa fa-envelope"></i>Soporte</a> </li>
                                     <li> <a href="social.html"><i class="fa fa-hashtag"></i>Redes Sociales</a> </li>
                                 	<li> <a href="faq.html"><i class="fa fa-question"></i> Dudas/Preguntas</a> </li>
-									<li> <a href="Logout"><i class="fa fa-sign-out"></i> Salir</a> </li>
+									<li> <a th:href="@{/logout}"><i class="fa fa-sign-out"></i> Salir</a> </li>
 								</ul>
 							</li>
 						</ul>
@@ -85,28 +85,31 @@
 		<div class="graphs">
               	<div class="float-right">
                   	<div class="btn-group">
-                      	<a class="btn btn-default" th:href="@{/}"><i class="fa fa-arrow-left fa-2x"></i><br>Regresar</a>
+                      	<a class="btn btn-default" th:href="@{/home}"><i class="fa fa-arrow-left fa-2x"></i><br>Regresar</a>
                       </div>
 				</div>
+		<h2 th:if="${#httpServletRequest.remoteUser == null}">Debe hacer login en la aplicación: localhost:8080/login</h2>
+		<div th:if="${#httpServletRequest.remoteUser != null}">		
 		<h3 class="blank1">Post completo</h3> 
-	<div th:switch="${post}">
-    <h2 th:case="null">Error en la aplicacion!</h2>
-        <div th:case="*">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Post</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr >
-                    <td th:text="${post.content}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>      
-    
-</div>
+		<div th:switch="${post}">
+	    <h2 th:case="null">Error en la aplicacion!</h2>
+	        <div th:case="*">
+	            <table>
+	                <thead>
+	                    <tr>
+	                        <th>Post</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                <tr >
+	                    <td th:text="${post.content}"></td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>      
+	    
+		</div>
+		</div>
 </div>
 </div>
 </section>
