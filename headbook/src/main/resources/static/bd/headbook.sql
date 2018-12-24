@@ -1,4 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE headbook.likes
 (
     post uuid NOT NULL,
@@ -17,12 +18,14 @@ ALTER TABLE headbook.likes
        
 CREATE TABLE headbook.usuario
 (
-    id uuid NOT NULL default uuid_generate_v1mc(),
+    id uuid NOT NULL DEFAULT uuid_generate_v1mc(),
     avatar character varying(255) COLLATE pg_catalog."default",
     name character varying(255) COLLATE pg_catalog."default",
     surname character varying(255) COLLATE pg_catalog."default",
     likesid_post uuid,
     likesid_usuario uuid,
+    username character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(20) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT usuario_pkey PRIMARY KEY (id),
     CONSTRAINT fk_usuario_likes FOREIGN KEY (likesid_post, likesid_usuario)
         REFERENCES headbook.likes (post, usuario) MATCH SIMPLE
@@ -36,6 +39,7 @@ TABLESPACE pg_default;
 
 ALTER TABLE headbook.usuario
     OWNER to headbook;
+    
     
 CREATE TABLE headbook.post
 (
@@ -77,12 +81,12 @@ ALTER TABLE headbook.likes
     ON UPDATE NO ACTION
     ON DELETE RESTRICT;
     
-INSERT INTO headbook.usuario (id,avatar,name,surname,likesid_post,likesid_usuario) VALUES 
-('3bffb3b6-053d-11e9-a890-2f7374de4daa','Posts tecnologicos','Francisco','Correa',NULL,NULL)
-,('881e14d2-064a-11e9-9be4-13628b2452a5','Tecnologia varios','Pedro','Torres',NULL,NULL)
+INSERT INTO headbook.usuario (id,avatar,"name",surname,likesid_post,likesid_usuario,username,"password") VALUES 
+('3bffb3b6-053d-11e9-a890-2f7374de4daa','Posts tecnologicos','Francisco','Correa',NULL,NULL,'user1','password')
+,('881e14d2-064a-11e9-9be4-13628b2452a5','Tecnologia varios','Pedro','Torres',NULL,NULL,'user2','password')
 ;
 
-INSERT INTO headbook.post (id,"content","date",title,likesid_post,likesid_usuario,usuario) VALUES 
+﻿INSERT INTO headbook.post (id,"content","date",title,likesid_post,likesid_usuario,usuario) VALUES 
 ('5c981604-053d-11e9-a890-2b2b1ebf1bb4','Al trabajar con bases de datos como MySql es común utilizar una clave primaría entera autoincremental que permita distinguir y referenciar cada uno de los registros. El problema surge cuando se tienen muchas computadoras remotas escribiendo una gran cantidad de registros al mismo tiempo, en este caso el proceso de inserción sería el cuello de botella ya que la generación de claves, aunque rápida, podría retrasar el ingreso de datos. Si, en cambio, se generan bases por separado para que cada una maneje una carga de inserción menor entonces las claves se repetirían y se perdería la función principal de la clave primaria. Una solución para estos escenarios en la utilización de un UUID como clave primaria.','2018-12-18 00:00:00.000','Campos UUID',NULL,NULL,'3bffb3b6-053d-11e9-a890-2f7374de4daa')
 ,('e39125f6-053d-11e9-a890-2f722157a746','Se garantiza la individualidad de cada clave : Aunque se utilicen varias tables, bases de datos y servidores las UUID seran diferentes.
 Facilidad de unión de tablas: Si se trabaja en paralelo es posible unir registros o tablas enteras sin generar un conflicto por claves duplicadas
@@ -105,10 +109,21 @@ Aquel camino la convirtió en la primera empresa de ese ámbito en lograr unos i
 ,('3c46f10d-4ae2-44c2-a950-86e491b959fc','Colocar en el mercado un televisor con resolución 8K en un momento en el que la resolución 4K UHD aún lucha por afianzarse parece una apuesta arriesgada. Y en gran medida lo es. Si además añadimos a la ecuación que los contenidos 8K fuera de Japón ni están ni se los espera a medio plazo, el contexto no parece el adecuado para que a este televisor de Samsung le vaya bien.
 
 A pesar de este clima a priori tan desapacible, el panorama, en realidad, no es tan desfavorable a esta propuesta como puede parecer. Y no lo es porque la marca surcoreana ha apostado por «vendernos» la resolución 8K como una tecnología de mejora de la calidad de imagen más, equiparable, en cierta medida, a los nanocristales o el HDR. De hecho, gracias a un escalado que recurre al aprendizaje automático promete mejorar nuestra experiencia aunque nos limitemos a reproducir contenidos 4K UHD o Full HD.','2018-12-18 00:00:00.000','Samsung QLED 8K Q900R, análisis: en ausencia de contenidos 8K',NULL,NULL,'3bffb3b6-053d-11e9-a890-2f7374de4daa')
+,('c3f4a72e-cfa4-43d4-a1c8-52bddff1dab4','Los smartwatches y relojes con conectividad para niños son una categoría de producto que goza de cierto éxito entre los padres y madres de niños de edades tempranas. Este tipo de relojes avanzados incluyen conectividad y GPS integrado para conocer en todo momento dónde se encuentra un niño y poder comunicarnos con él.
+
+Aunque los diferentes modelos que existen en el mercado parecen similares, hemos estado probando cuatro relojes/móvil para niños para conocer sus diferencias y saber qué modelos son los más recomendables.
+
+Aquí tienes nuestra guía-comparativa con los mejores relojes con GPS para niños.
+
+Nuestro recomendado: Alcatel Move Time','2018-12-22 00:00:00.000','El mejor smartwatch para localizar y hablar con los niños',NULL,NULL,'881e14d2-064a-11e9-9be4-13628b2452a5')
 ;
+
 INSERT INTO headbook.likes (post,usuario) VALUES 
 ('5c981604-053d-11e9-a890-2b2b1ebf1bb4','3bffb3b6-053d-11e9-a890-2f7374de4daa')
 ,('2681778a-053e-11e9-a890-3385026e7856','3bffb3b6-053d-11e9-a890-2f7374de4daa')
 ,('a191a0b7-7679-47d9-b866-b588029cfb00','881e14d2-064a-11e9-9be4-13628b2452a5')
 ,('e39125f6-053d-11e9-a890-2f722157a746','3bffb3b6-053d-11e9-a890-2f7374de4daa')
+,('a191a0b7-7679-47d9-b866-b588029cfb00','3bffb3b6-053d-11e9-a890-2f7374de4daa')
+,('5c981604-053d-11e9-a890-2b2b1ebf1bb4','881e14d2-064a-11e9-9be4-13628b2452a5')
+,('3c46f10d-4ae2-44c2-a950-86e491b959fc','3bffb3b6-053d-11e9-a890-2f7374de4daa')
 ;

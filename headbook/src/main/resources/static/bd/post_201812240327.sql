@@ -21,4 +21,11 @@ Aquel camino la convirtió en la primera empresa de ese ámbito en lograr unos i
 ,('3c46f10d-4ae2-44c2-a950-86e491b959fc','Colocar en el mercado un televisor con resolución 8K en un momento en el que la resolución 4K UHD aún lucha por afianzarse parece una apuesta arriesgada. Y en gran medida lo es. Si además añadimos a la ecuación que los contenidos 8K fuera de Japón ni están ni se los espera a medio plazo, el contexto no parece el adecuado para que a este televisor de Samsung le vaya bien.
 
 A pesar de este clima a priori tan desapacible, el panorama, en realidad, no es tan desfavorable a esta propuesta como puede parecer. Y no lo es porque la marca surcoreana ha apostado por «vendernos» la resolución 8K como una tecnología de mejora de la calidad de imagen más, equiparable, en cierta medida, a los nanocristales o el HDR. De hecho, gracias a un escalado que recurre al aprendizaje automático promete mejorar nuestra experiencia aunque nos limitemos a reproducir contenidos 4K UHD o Full HD.','2018-12-18 00:00:00.000','Samsung QLED 8K Q900R, análisis: en ausencia de contenidos 8K',NULL,NULL,'3bffb3b6-053d-11e9-a890-2f7374de4daa')
+,('c3f4a72e-cfa4-43d4-a1c8-52bddff1dab4','Los smartwatches y relojes con conectividad para niños son una categoría de producto que goza de cierto éxito entre los padres y madres de niños de edades tempranas. Este tipo de relojes avanzados incluyen conectividad y GPS integrado para conocer en todo momento dónde se encuentra un niño y poder comunicarnos con él.
+
+Aunque los diferentes modelos que existen en el mercado parecen similares, hemos estado probando cuatro relojes/móvil para niños para conocer sus diferencias y saber qué modelos son los más recomendables.
+
+Aquí tienes nuestra guía-comparativa con los mejores relojes con GPS para niños.
+
+Nuestro recomendado: Alcatel Move Time','2018-12-22 00:00:00.000','El mejor smartwatch para localizar y hablar con los niños',NULL,NULL,'881e14d2-064a-11e9-9be4-13628b2452a5')
 ;
