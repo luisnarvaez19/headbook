@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hiberus.headbook.exception.HeadBookException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,7 +58,8 @@ public class PostController {
     }
     
     @PostMapping("/agregapost")
-    public String agregaPost(PostDTO postDTO,  Model model,HttpServletRequest request) {
+    public String agregaPost(PostDTO postDTO,  Model model,HttpServletRequest request) throws HeadBookException {
+        //throw new HeadBookException();
     	String user = request.getRemoteUser();
         String mensaje=postService.addPost(postDTO,user);
     	if (mensaje==null)
@@ -69,7 +71,7 @@ public class PostController {
         		model.addAttribute("mensaje",mensaje);
         	return "agrega_post";
         }
-        	
+
     }
     
    

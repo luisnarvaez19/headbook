@@ -1,6 +1,12 @@
 package com.hiberus.headbook.exception;
 
-public class HeadBookException extends Exception {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseBody
+@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Headbook not found")
+public class HeadBookException extends RuntimeException {
 
 	/**
 	 * 
@@ -27,4 +33,6 @@ public class HeadBookException extends Exception {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
+
+
 }

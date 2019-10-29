@@ -86,7 +86,7 @@ INSERT INTO headbook.usuario (id,avatar,"name",surname,likesid_post,likesid_usua
 ,('881e14d2-064a-11e9-9be4-13628b2452a5','Tecnologia varios','Pedro','Torres',NULL,NULL,'user2','password')
 ;
 
-﻿INSERT INTO headbook.post (id,"content","date",title,likesid_post,likesid_usuario,usuario) VALUES 
+INSERT INTO headbook.post (id,"content","date",title,likesid_post,likesid_usuario,usuario) VALUES
 ('5c981604-053d-11e9-a890-2b2b1ebf1bb4','Al trabajar con bases de datos como MySql es común utilizar una clave primaría entera autoincremental que permita distinguir y referenciar cada uno de los registros. El problema surge cuando se tienen muchas computadoras remotas escribiendo una gran cantidad de registros al mismo tiempo, en este caso el proceso de inserción sería el cuello de botella ya que la generación de claves, aunque rápida, podría retrasar el ingreso de datos. Si, en cambio, se generan bases por separado para que cada una maneje una carga de inserción menor entonces las claves se repetirían y se perdería la función principal de la clave primaria. Una solución para estos escenarios en la utilización de un UUID como clave primaria.','2018-12-18 00:00:00.000','Campos UUID',NULL,NULL,'3bffb3b6-053d-11e9-a890-2f7374de4daa')
 ,('e39125f6-053d-11e9-a890-2f722157a746','Se garantiza la individualidad de cada clave : Aunque se utilicen varias tables, bases de datos y servidores las UUID seran diferentes.
 Facilidad de unión de tablas: Si se trabaja en paralelo es posible unir registros o tablas enteras sin generar un conflicto por claves duplicadas
